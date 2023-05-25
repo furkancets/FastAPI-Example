@@ -33,6 +33,13 @@ async def get_all(session: Session = Depends(get_db), skip: int = 0, limit: int 
         select(Customer)).all()
     return customers[skip : skip + limit]
 
+@router.get("/customers/{city}", response_model=List[ShowCustomer])
+async def get_city(city: str, session: Session = Depends(get_db), skip: int = 0, limit: int = 10):
+    with session.begin():
+        query = session.query(Customer).filter(Customer.customerCity == city)
+        result = query.all()
+    return result
+
 # Get customer by id
 @router.get("/customers/{id}", status_code=status.HTTP_200_OK)
 async def get_by_id(id: int, session: Session = Depends(get_db)):
