@@ -1,0 +1,4 @@
+mainapp/__pycache__
+mainapp/routers/__pycache__
+.env
+Pipfile.lock
