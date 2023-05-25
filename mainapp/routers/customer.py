@@ -33,12 +33,21 @@ async def get_all(session: Session = Depends(get_db), skip: int = 0, limit: int 
         select(Customer)).all()
     return customers[skip : skip + limit]
 
-@router.get("/customers/{city}", response_model=List[ShowCustomer])
-async def get_city(city: str, session: Session = Depends(get_db), skip: int = 0, limit: int = 10):
-    with session.begin():
-        query = session.query(Customer).filter(Customer.customerCity == city)
-        result = query.all()
-    return result
+#@router.get("/customers/{city}",status_code=status.HTTP_200_OK, response_model=List[ShowCustomer])
+#async def get_city(city: str, session: Session = Depends(get_db)):
+#    statement = select(Customer).where(Customer.customerCity == city)
+#    results = session.exec(statement)
+#    try:
+#        one_customer = results.all()
+#    except:
+#        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+#                            detail=f"Customer {city} has not found.")
+#    return one_customer
+#    #with session.begin():
+#    #    query = session.query(Customer).filter(Customer.customerCity == city)
+#    #    result = query.all()
+#    #return result
+
 
 # Get customer by id
 @router.get("/customers/{id}", status_code=status.HTTP_200_OK)

@@ -17,3 +17,5 @@ FLUSH PRIVILEGES;
 exit
 
 mysql -u traindb -D train -p
+
+uvicorn mainapp.main:app --host 0.0.0.0 --port 8002 --reload
