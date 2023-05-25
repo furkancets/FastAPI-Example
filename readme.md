@@ -19,3 +19,5 @@ exit
 mysql -u traindb -D train -p
 
 uvicorn mainapp.main:app --host 0.0.0.0 --port 8002 --reload
+
+https://raw.githubusercontent.com/erkansirin78/datasets/master/retail_db/customers.csv
