@@ -4,7 +4,7 @@ chmod +x mysql-start.sh
 
 After run this command mysql-start.sh
 
-docker exec -it mysql bash
+docker exec -it mysql-server bash
 
 mysql -u root -p
 
